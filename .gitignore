@@ -5,3 +5,5 @@
 # Database migration
 alembic
 alembic.ini
+
+node_modules
