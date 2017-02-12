@@ -202,10 +202,11 @@ def getPlaylist(request):
     user = db_session.query(User).filter(User.name == username).first()
 
     if user == None:
-        resp = jsonify(**{"Failed": "User does not exist"})
-        resp.status_code = 467
-        return resp
-
+        newUser = User(username)
+        db_session.add(newUser)
+        db_session.commit()
+        user = db_session.query(User).filter(User.name == username).first()
+    
     if classification in user.playlists["classifications"]:
         playlist = user.playlists["classifications"][classification]
         print playlist
