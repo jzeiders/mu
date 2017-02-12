@@ -1,0 +1,1 @@
+export const CHANGE_SONG = id =>({CHANGE_SONG, id});

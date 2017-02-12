@@ -1,4 +1,4 @@
-import {CHANGE_SONG} from 
+import {CHANGE_SONG} from '../actions'
 
 const initialState = [
     {
@@ -8,7 +8,7 @@ const initialState = [
     }
 ]
 
-export default function todos(state = initialState, action) {
+export default function player(state = {}, action) {
     switch (action.type) {
         case CHANGE_SONG:
             return [
@@ -16,6 +16,8 @@ export default function todos(state = initialState, action) {
                     id: Math.random()
                 },
                 ...state
-        ]
+            ]
+        default:
+            return state;
     }
 }
