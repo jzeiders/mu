@@ -102,6 +102,7 @@ def getClass(classification):
     if classf != None:
         jsonObj = dict()
         jsonObj["class"] = classification
+        jsonObj["heart_rate"] = classf.heartrate
         jsonObj["alpha"] = classf.alpha["entries"]
         jsonObj["beta"] = classf.beta["entries"]
         jsonObj["delta"] = classf.delta["entries"]
