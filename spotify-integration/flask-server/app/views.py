@@ -20,7 +20,7 @@ def user():
         return putUser(request)
 
 def putUser(request):
-    username = request.form["username"]
+    username = str(request.form["username"])
     user = db_session.query(User).filter(User.name == str(username)).first()
     if user == None:
         newUser = User(username)
@@ -35,7 +35,7 @@ def putUser(request):
         return resp
 
 def postUser(request):
-    user = request.form["user"]
+    user = str(request.form["user"])
     userf = db_session.query(User).filter(User.name == str(user)).first()
     if userf != None:
         classification = str(request.form["classification"])
@@ -52,6 +52,9 @@ def postUser(request):
         else:
             userf.playlists["classifications"][classification].append(song)
         
+        flag_modified(userf, "playlists")
+        db_session.commit()
+
         resp = jsonify(**{})
         resp.status_code = 200
         return resp
@@ -63,7 +66,7 @@ def postUser(request):
 
 @app.route('/clear', methods=["POST"])
 def clear():
-    classification = request.form["class"]
+    classification = str(request.form["class"])
 
     classf = db_session.query(TrainingData).filter(TrainingData.className == str(classification)).first()
     if classf != None:
@@ -127,12 +130,13 @@ def classification():
 def postClass(request):
     jsonPost = request.get_json()
     print jsonPost
-    classification = jsonPost[u"class"]
-    alpha = jsonPost[u"alpha"]
-    beta = jsonPost[u"beta"]
-    gamma = jsonPost[u"gamma"]
-    delta = jsonPost[u"delta"]
-    theta = jsonPost[u"theta"]
+    classification = str(jsonPost[u"class"])
+    alpha = str(jsonPost[u"alpha"])
+    beta = str(jsonPost[u"beta"])
+    gamma = str(jsonPost[u"gamma"])
+    delta = str(jsonPost[u"delta"])
+    theta = str(jsonPost[u"theta"])
+    heartrate = int(jsonPost[u"heart_rate"])
 
     classf = db_session.query(TrainingData).filter(TrainingData.className == str(classification)).first()
     if classf != None:
@@ -141,6 +145,7 @@ def postClass(request):
         classf.delta["entries"].extend(delta)
         classf.gamma["entries"].extend(gamma)
         classf.theta["entries"].extend(theta)
+        classf.heartrate = heartrate
 
         flag_modified(classf, "alpha")
         flag_modified(classf, "beta")
@@ -180,3 +185,34 @@ def putClass(request):
 
 def getClass(request):
     return str(200)
+
+@app.route('/playlist', methods=["GET"])
+def playlist():
+    if request.method == "GET":
+        return getPlaylist(request)
+
+def getPlaylist(request):
+    username = str(request.args.get("username"))
+    classification = str(request.args.get("classification"))
+    print "User: " + username
+    print "Classifcation: " + classification
+
+    user = db_session.query(User).filter(User.name == username).first()
+
+    if user == None:
+        resp = jsonify(**{"Failed": "User does not exist"})
+        resp.status_code = 467
+        return resp
+
+    if classification in user.playlists["classifications"]:
+        playlist = user.playlists["classifications"][classification]
+        print playlist
+        jsonData = dict()
+        jsonData["playlist"] = playlist
+        resp = jsonify(**jsonData)
+        resp.status_code = 200
+        return resp
+    else:
+        resp = jsonify(**{"Failed": "User has no playlist data"})
+        resp.status_code = 467
+        return resp

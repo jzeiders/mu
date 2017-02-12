@@ -27,6 +27,7 @@ class TrainingData(Base):
     delta = Column(JSON)
     gamma = Column(JSON)
     theta = Column(JSON)
+    heartrate = Column(Integer)
 
     def __init__(self, className=None):
         self.className = className
@@ -40,5 +41,4 @@ class TrainingData(Base):
         self.gamma["entries"] = list()
         self.theta = {}
         self.theta["entries"] = list()
-        
-
+        self.heartrate = 0
