@@ -1,7 +1,7 @@
 from flask import jsonify, request
 import copy
 
-from app import app
+from app import app, sc_client
 from app.database import db_session
 from models import TrainingData, User
 
@@ -197,7 +197,7 @@ def getPlaylist(request):
     username = str(request.args.get("username"))
     classification = str(request.args.get("classification"))
     print "User: " + username
-    print "Classifcation: " + classification
+    print "Classification: " + classification
 
     user = db_session.query(User).filter(User.name == username).first()
 
@@ -218,3 +218,56 @@ def getPlaylist(request):
         resp = jsonify(**{"Failed": "User has no playlist data"})
         resp.status_code = 467
         return resp
+
+@app.route('/hyped', methods=["GET"])
+def get_hyped():
+    newTracks = sc_client.get('/tracks', genre="edm", limit="50")
+    
+    jsonOut = dict()
+    jsonOut["playlist"] = list()
+
+    for track in newTracks:
+        jsonOut["playlist"].append({
+            "song-rating": "60",
+            "song-id":track.id
+        })
+    
+    resp = jsonify(**jsonOut)
+    resp.status_code = 200
+    return resp
+
+@app.route('/relaxed', methods=["GET"])
+def get_relaxed():
+    newTracks = sc_client.get('/tracks', genre="pop", limit="50")
+    
+    jsonOut = dict()
+    jsonOut["playlist"] = list()
+
+    for track in newTracks:
+        jsonOut["playlist"].append({
+            "song-rating": "60",
+            "song-id":track.id
+        })
+    
+    resp = jsonify(**jsonOut)
+    resp.status_code = 200
+    return resp
+
+@app.route('/focused', methods=["GET"])
+def get_focused():
+    newTracks = sc_client.get('/tracks', genre="piano", limit="50")
+    
+    jsonOut = dict()
+    jsonOut["playlist"] = list()
+
+    for track in newTracks:
+        jsonOut["playlist"].append({
+            "song-rating": "60",
+            "song-id":track.id
+        })
+    
+    resp = jsonify(**jsonOut)
+    resp.status_code = 200
+    return resp
+
+
