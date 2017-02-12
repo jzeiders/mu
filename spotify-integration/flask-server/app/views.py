@@ -78,12 +78,12 @@ def classification():
 def postClass(request):
     jsonPost = request.get_json()
     print jsonPost
-    classification = jsonPost["class"]
-    alpha = jsonPost["alpha"]
-    beta = jsonPost["beta"]
-    gamma = jsonPost["gamma"]
-    delta = jsonPost["delta"]
-    theta = jsonPost["theta"]
+    classification = jsonPost[u"class"]
+    alpha = jsonPost[u"alpha"]
+    beta = jsonPost[u"beta"]
+    gamma = jsonPost[u"gamma"]
+    delta = jsonPost[u"delta"]
+    theta = jsonPost[u"theta"]
 
     classf = db_session.query(TrainingData).filter(TrainingData.className == str(classification)).first()
     if classf != None:
