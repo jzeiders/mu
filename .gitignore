@@ -1,3 +1,7 @@
 # For Sam
 .DS_Store
 *.pyc
+
+# Database migration
+alembic
+alembic.ini
