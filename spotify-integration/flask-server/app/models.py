@@ -10,7 +10,9 @@ class User(Base):
 
     def __init__(self, name=None, playlists=None):
         self.name = name
-        playlists["categories"] = []
+        if playlists == None:
+            self.playlists = dict()
+            self.playlists["classifications"] = dict()
 
 
     def __repr__(self):

@@ -3,7 +3,7 @@ import copy
 
 from app import app
 from app.database import db_session
-from models import TrainingData
+from models import TrainingData, User
 
 from sqlalchemy.orm.attributes import flag_modified
 
@@ -11,6 +11,55 @@ from sqlalchemy.orm.attributes import flag_modified
 @app.route('/index')
 def index():
     return "Hello, World!"
+
+@app.route('/user', methods=["PUT", "POST"])
+def user():
+    if request.method == "POST":
+        return postUser(request)
+    elif request.method == "PUT":
+        return putUser(request)
+
+def putUser(request):
+    username = request.form["username"]
+    user = db_session.query(User).filter(User.name == str(username)).first()
+    if user == None:
+        newUser = User(username)
+        db_session.add(newUser)
+        db_session.commit()
+        resp = jsonify(**{"New User" : username})
+        resp.status_code = 200
+        return resp
+    else:
+        resp = jsonify(**{"Failed" : "User already exists"})
+        resp.status_code = 455
+        return resp
+
+def postUser(request):
+    user = request.form["user"]
+    userf = db_session.query(User).filter(User.name == str(user)).first()
+    if userf != None:
+        classification = str(request.form["classification"])
+        song_id = str(request.form["song-id"])
+        song_rating = str(request.form["song-rating"])
+
+        song = dict()
+        song["song-id"] = song_id
+        song["song-rating"] = song_rating
+
+        if classification not in userf.playlists["classifications"]:
+            userf.playlists["classifications"][classification] = list()
+            userf.playlists["classifications"][classification].append(song)
+        else:
+            userf.playlists["classifications"][classification].append(song)
+        
+        resp = jsonify(**{})
+        resp.status_code = 200
+        return resp
+    else:
+        resp = jsonify(**{"message": "user does not exist"})
+        resp.status_code = 434
+        return resp        
+
 
 @app.route('/clear', methods=["POST"])
 def clear():
