@@ -43,11 +43,11 @@ class ViewController: UIViewController, IXNMuseConnectionListener, IXNMuseDataLi
     var betaData = [Double]()
     var gammaData = [Double]()
     
-    var deltaDataSet = LineChartDataSet(values: [ChartDataEntry](), label: "delta")
-    var thetaDataSet = LineChartDataSet(values: [ChartDataEntry](), label: "theta")
-    var alphaDataSet = LineChartDataSet(values: [ChartDataEntry](), label: "alpha")
-    var betaDataSet = LineChartDataSet(values: [ChartDataEntry](), label: "beta")
-    var gammaDataSet = LineChartDataSet(values: [ChartDataEntry](), label: "gamma")
+    var deltaDataSet = LineChartDataSet(values: [ChartDataEntry](), label: "Delta")
+    var thetaDataSet = LineChartDataSet(values: [ChartDataEntry](), label: "Theta")
+    var alphaDataSet = LineChartDataSet(values: [ChartDataEntry](), label: "Alpha")
+    var betaDataSet = LineChartDataSet(values: [ChartDataEntry](), label: "Beta")
+    var gammaDataSet = LineChartDataSet(values: [ChartDataEntry](), label: "Gamma")
     
     let data = LineChartData(dataSets: [LineChartDataSet]())
     
@@ -86,12 +86,14 @@ class ViewController: UIViewController, IXNMuseConnectionListener, IXNMuseDataLi
         betaDataSet.circleRadius = 0
         gammaDataSet.circleRadius = 0
         
-        deltaDataSet.setColor(ChartColorTemplates.colorful()[0])
-        thetaDataSet.setColor(ChartColorTemplates.colorful()[1])
-        alphaDataSet.setColor(ChartColorTemplates.colorful()[2])
-        betaDataSet.setColor(ChartColorTemplates.colorful()[3])
-        gammaDataSet.setColor(ChartColorTemplates.colorful()[4])
+        deltaDataSet.setColor(ChartColorTemplates.joyful()[0])
+        thetaDataSet.setColor(ChartColorTemplates.joyful()[1])
+        alphaDataSet.setColor(ChartColorTemplates.joyful()[2])
+        betaDataSet.setColor(ChartColorTemplates.joyful()[3])
+        gammaDataSet.setColor(ChartColorTemplates.joyful()[4])
         
+        eegLineChart.backgroundColor = UIColor.clear
+        eegLineChart.noDataTextColor = UIColor.white
         eegLineChart.drawBordersEnabled = false
         eegLineChart.drawGridBackgroundEnabled = false
         eegLineChart.xAxis.drawLabelsEnabled = false
@@ -106,9 +108,10 @@ class ViewController: UIViewController, IXNMuseConnectionListener, IXNMuseDataLi
         eegLineChart.leftAxis.drawAxisLineEnabled = false
         eegLineChart.leftAxis.drawLabelsEnabled = false
         eegLineChart.xAxis.axisMaximum = 100
-        eegLineChart.leftAxis.axisMaximum = 1
+//        eegLineChart.leftAxis.axisMaximum = 1
         eegLineChart.xAxis.axisMinimum = 0
         eegLineChart.leftAxis.axisMinimum = 0
+        eegLineChart.legend.textColor = UIColor.white
         
     }
 
@@ -358,6 +361,11 @@ class ViewController: UIViewController, IXNMuseConnectionListener, IXNMuseDataLi
         return classifications[row]
     }
     
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        let str = NSAttributedString(string: classifications[row], attributes: [NSForegroundColorAttributeName: UIColor.white])
+        return str
+    }
+    
     @IBAction func segmentedControlSwitched(_ sender: UISegmentedControl) {
         if (sender.selectedSegmentIndex == 0){
             moodPicker.isHidden = false
@@ -376,11 +384,11 @@ class ViewController: UIViewController, IXNMuseConnectionListener, IXNMuseDataLi
         
     }
     func websocketDidReceiveMessage(socket: WebSocket, text: String){
+        print("WEBSOCKET: \(text)")
         if (text == "hi"){
             return
         }
-        
-        print("WEBSOCKET: \(text)")
+    
         
         let data = text.data(using: String.Encoding.utf8, allowLossyConversion: false)!
         
