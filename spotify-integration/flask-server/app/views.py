@@ -132,11 +132,11 @@ def postClass(request):
     jsonPost = request.get_json()
     print jsonPost
     classification = str(jsonPost[u"class"])
-    alpha = str(jsonPost[u"alpha"])
-    beta = str(jsonPost[u"beta"])
-    gamma = str(jsonPost[u"gamma"])
-    delta = str(jsonPost[u"delta"])
-    theta = str(jsonPost[u"theta"])
+    alpha = jsonPost[u"alpha"]
+    beta = jsonPost[u"beta"])
+    gamma = jsonPost[u"gamma"]
+    delta = jsonPost[u"delta"]
+    theta = jsonPost[u"theta"]
     heartrate = int(jsonPost[u"heart_rate"])
 
     classf = db_session.query(TrainingData).filter(TrainingData.className == str(classification)).first()
@@ -163,9 +163,6 @@ def postClass(request):
         resp = jsonify(**{"message": "class does not exist"})
         resp.status_code = 434
         return resp
-
-
-    
     return str(200)
 
 def putClass(request):
