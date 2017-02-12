@@ -44,6 +44,25 @@ def clear():
         resp.status_code = 434
         return resp
 
+@app.route('/classification/<string:classification>', methods=["GET"])
+def getClass(classification):
+    classf = db_session.query(TrainingData).filter(TrainingData.className == str(classification)).first()
+    if classf != None:
+        jsonObj = dict()
+        jsonObj["class"] = classification
+        jsonObj["alpha"] = classf.alpha["entries"]
+        jsonObj["beta"] = classf.beta["entries"]
+        jsonObj["delta"] = classf.delta["entries"]
+        jsonObj["gamma"] = classf.gamma["entries"]
+        jsonObj["theta"] = classf.theta["entries"]
+        
+        resp = jsonify(**jsonObj)
+        resp.status_code = 200
+        return resp
+    else:
+        resp = jsonify(**{"message": "class does not exist"})
+        resp.status_code = 434
+        return resp
 
 @app.route('/classification', methods=["GET", "POST", "PUT"])
 def classification():
