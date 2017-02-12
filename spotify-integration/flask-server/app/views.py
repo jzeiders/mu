@@ -133,7 +133,7 @@ def postClass(request):
     print jsonPost
     classification = str(jsonPost[u"class"])
     alpha = jsonPost[u"alpha"]
-    beta = jsonPost[u"beta"])
+    beta = jsonPost[u"beta"]
     gamma = jsonPost[u"gamma"]
     delta = jsonPost[u"delta"]
     theta = jsonPost[u"theta"]
