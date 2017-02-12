@@ -1,0 +1,17 @@
+PODS:
+  - Charts (3.0.1):
+    - Charts/Core (= 3.0.1)
+  - Charts/Core (3.0.1)
+  - Starscream (2.0.2)
+
+DEPENDENCIES:
+  - Charts
+  - Starscream
+
+SPEC CHECKSUMS:
+  Charts: 0e84f4418e87dad6a9edde221fba37ebb51d3ba7
+  Starscream: 6c135a34e0a6e60cedaa0b30db67a4c05cf7cd38
+
+PODFILE CHECKSUM: 15b7caffeb1842b7a0c0a2f3383e8a6eab6efb3e
+
+COCOAPODS: 1.2.0

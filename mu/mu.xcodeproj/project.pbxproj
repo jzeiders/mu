@@ -1,0 +1,719 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		332D13B51E4FDA120075C106 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332D13B41E4FDA120075C106 /* AppDelegate.swift */; };
+		332D13B71E4FDA120075C106 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332D13B61E4FDA120075C106 /* ViewController.swift */; };
+		332D13BA1E4FDA120075C106 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 332D13B81E4FDA120075C106 /* Main.storyboard */; };
+		332D13BC1E4FDA120075C106 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 332D13BB1E4FDA120075C106 /* Assets.xcassets */; };
+		332D13BF1E4FDA120075C106 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 332D13BD1E4FDA120075C106 /* LaunchScreen.storyboard */; };
+		332D13CD1E4FE3060075C106 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 332D13CC1E4FE3060075C106 /* CoreBluetooth.framework */; };
+		332D13FB1E4FFE830075C106 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 332D13FA1E4FFE830075C106 /* libc++.tbd */; };
+		33DB77BD1E503D5300F56500 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33DB77BC1E503D5300F56500 /* Assets.xcassets */; };
+		33DB77C41E503D5300F56500 /* mu-watch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 33DB77C31E503D5300F56500 /* mu-watch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		33DB77C91E503D5300F56500 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DB77C81E503D5300F56500 /* InterfaceController.swift */; };
+		33DB77CB1E503D5300F56500 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DB77CA1E503D5300F56500 /* ExtensionDelegate.swift */; };
+		33DB77CD1E503D5300F56500 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33DB77CC1E503D5300F56500 /* Assets.xcassets */; };
+		33DB77D11E503D5300F56500 /* mu-watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 33DB77B71E503D5300F56500 /* mu-watch.app */; };
+		33DB77DB1E5041D900F56500 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33DB77DA1E5041D900F56500 /* Interface.storyboard */; };
+		33DB77DE1E50540700F56500 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33DB77DD1E50540700F56500 /* HealthKit.framework */; };
+		33E3FA1B1E50146000DF7465 /* Muse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33E3FA1A1E50146000DF7465 /* Muse.framework */; };
+		33E3FA1F1E50363000DF7465 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33E3FA1E1E50363000DF7465 /* HealthKit.framework */; };
+		DBBE9D64FFA890E0D9BD3435 /* Pods_mu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78E3D5E672C27C818CA75E97 /* Pods_mu.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		33DB77C51E503D5300F56500 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 332D13A91E4FDA120075C106 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 33DB77C21E503D5300F56500;
+			remoteInfo = "mu-watch Extension";
+		};
+		33DB77CF1E503D5300F56500 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 332D13A91E4FDA120075C106 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 33DB77B61E503D5300F56500;
+			remoteInfo = "mu-watch";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		33DB77D71E503D5300F56500 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				33DB77C41E503D5300F56500 /* mu-watch Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		33DB77D91E503D5300F56500 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				33DB77D11E503D5300F56500 /* mu-watch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		332D13B11E4FDA120075C106 /* mu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mu.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		332D13B41E4FDA120075C106 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		332D13B61E4FDA120075C106 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		332D13B91E4FDA120075C106 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		332D13BB1E4FDA120075C106 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		332D13BE1E4FDA120075C106 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		332D13C01E4FDA120075C106 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		332D13C81E4FDDCC0075C106 /* mu-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "mu-Bridging-Header.h"; sourceTree = "<group>"; };
+		332D13CC1E4FE3060075C106 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		332D13FA1E4FFE830075C106 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		33DB77B71E503D5300F56500 /* mu-watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mu-watch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		33DB77BC1E503D5300F56500 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		33DB77BE1E503D5300F56500 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		33DB77C31E503D5300F56500 /* mu-watch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "mu-watch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		33DB77C81E503D5300F56500 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		33DB77CA1E503D5300F56500 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		33DB77CC1E503D5300F56500 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		33DB77CE1E503D5300F56500 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		33DB77DA1E5041D900F56500 /* Interface.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Interface.storyboard; sourceTree = "<group>"; };
+		33DB77DC1E50540700F56500 /* mu-watch Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "mu-watch Extension.entitlements"; sourceTree = "<group>"; };
+		33DB77DD1E50540700F56500 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS3.1.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
+		33E3FA1A1E50146000DF7465 /* Muse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Muse.framework; sourceTree = "<group>"; };
+		33E3FA1E1E50363000DF7465 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		33E3FA201E50363000DF7465 /* mu.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = mu.entitlements; sourceTree = "<group>"; };
+		3B364B77FB899D7E39FCC15D /* Pods-mu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-mu/Pods-mu.debug.xcconfig"; sourceTree = "<group>"; };
+		4B4D291C70BF3DEB3421D6F1 /* Pods-mu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mu.release.xcconfig"; path = "Pods/Target Support Files/Pods-mu/Pods-mu.release.xcconfig"; sourceTree = "<group>"; };
+		78E3D5E672C27C818CA75E97 /* Pods_mu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		332D13AE1E4FDA120075C106 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				33E3FA1B1E50146000DF7465 /* Muse.framework in Frameworks */,
+				332D13FB1E4FFE830075C106 /* libc++.tbd in Frameworks */,
+				332D13CD1E4FE3060075C106 /* CoreBluetooth.framework in Frameworks */,
+				DBBE9D64FFA890E0D9BD3435 /* Pods_mu.framework in Frameworks */,
+				33E3FA1F1E50363000DF7465 /* HealthKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		33DB77C01E503D5300F56500 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				33DB77DE1E50540700F56500 /* HealthKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A14459A7A5ED70EB91FEB21 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		332D13A81E4FDA120075C106 = {
+			isa = PBXGroup;
+			children = (
+				332D13B31E4FDA120075C106 /* mu */,
+				33DB77B81E503D5300F56500 /* mu-watch */,
+				33DB77C71E503D5300F56500 /* mu-watch Extension */,
+				332D13B21E4FDA120075C106 /* Products */,
+				332D13CB1E4FE3060075C106 /* Frameworks */,
+				3454B2CBDF878065091906D6 /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		332D13B21E4FDA120075C106 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				332D13B11E4FDA120075C106 /* mu.app */,
+				33DB77B71E503D5300F56500 /* mu-watch.app */,
+				33DB77C31E503D5300F56500 /* mu-watch Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		332D13B31E4FDA120075C106 /* mu */ = {
+			isa = PBXGroup;
+			children = (
+				33E3FA201E50363000DF7465 /* mu.entitlements */,
+				332D13B41E4FDA120075C106 /* AppDelegate.swift */,
+				332D13B61E4FDA120075C106 /* ViewController.swift */,
+				332D13B81E4FDA120075C106 /* Main.storyboard */,
+				332D13BB1E4FDA120075C106 /* Assets.xcassets */,
+				332D13BD1E4FDA120075C106 /* LaunchScreen.storyboard */,
+				332D13C01E4FDA120075C106 /* Info.plist */,
+				332D13C81E4FDDCC0075C106 /* mu-Bridging-Header.h */,
+			);
+			path = mu;
+			sourceTree = "<group>";
+		};
+		332D13CB1E4FE3060075C106 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				33DB77DD1E50540700F56500 /* HealthKit.framework */,
+				33E3FA1E1E50363000DF7465 /* HealthKit.framework */,
+				33E3FA1A1E50146000DF7465 /* Muse.framework */,
+				332D13FA1E4FFE830075C106 /* libc++.tbd */,
+				332D13CC1E4FE3060075C106 /* CoreBluetooth.framework */,
+				78E3D5E672C27C818CA75E97 /* Pods_mu.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		33DB77B81E503D5300F56500 /* mu-watch */ = {
+			isa = PBXGroup;
+			children = (
+				33DB77DA1E5041D900F56500 /* Interface.storyboard */,
+				33DB77BC1E503D5300F56500 /* Assets.xcassets */,
+				33DB77BE1E503D5300F56500 /* Info.plist */,
+			);
+			path = "mu-watch";
+			sourceTree = "<group>";
+		};
+		33DB77C71E503D5300F56500 /* mu-watch Extension */ = {
+			isa = PBXGroup;
+			children = (
+				33DB77DC1E50540700F56500 /* mu-watch Extension.entitlements */,
+				33DB77C81E503D5300F56500 /* InterfaceController.swift */,
+				33DB77CA1E503D5300F56500 /* ExtensionDelegate.swift */,
+				33DB77CC1E503D5300F56500 /* Assets.xcassets */,
+				33DB77CE1E503D5300F56500 /* Info.plist */,
+			);
+			path = "mu-watch Extension";
+			sourceTree = "<group>";
+		};
+		3454B2CBDF878065091906D6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3B364B77FB899D7E39FCC15D /* Pods-mu.debug.xcconfig */,
+				4B4D291C70BF3DEB3421D6F1 /* Pods-mu.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		332D13B01E4FDA120075C106 /* mu */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 332D13C31E4FDA120075C106 /* Build configuration list for PBXNativeTarget "mu" */;
+			buildPhases = (
+				F354F7901A081E3D616E3946 /* [CP] Check Pods Manifest.lock */,
+				332D13AD1E4FDA120075C106 /* Sources */,
+				332D13AE1E4FDA120075C106 /* Frameworks */,
+				332D13AF1E4FDA120075C106 /* Resources */,
+				B9E48896D3E07BF32FC11EE8 /* [CP] Embed Pods Frameworks */,
+				15BD9268D42F63CEB11F4E09 /* [CP] Copy Pods Resources */,
+				33DB77D91E503D5300F56500 /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				33DB77D01E503D5300F56500 /* PBXTargetDependency */,
+			);
+			name = mu;
+			productName = mu;
+			productReference = 332D13B11E4FDA120075C106 /* mu.app */;
+			productType = "com.apple.product-type.application";
+		};
+		33DB77B61E503D5300F56500 /* mu-watch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 33DB77D81E503D5300F56500 /* Build configuration list for PBXNativeTarget "mu-watch" */;
+			buildPhases = (
+				33DB77B51E503D5300F56500 /* Resources */,
+				33DB77D71E503D5300F56500 /* Embed App Extensions */,
+				7A14459A7A5ED70EB91FEB21 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				33DB77C61E503D5300F56500 /* PBXTargetDependency */,
+			);
+			name = "mu-watch";
+			productName = "mu-watch";
+			productReference = 33DB77B71E503D5300F56500 /* mu-watch.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		33DB77C21E503D5300F56500 /* mu-watch Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 33DB77D61E503D5300F56500 /* Build configuration list for PBXNativeTarget "mu-watch Extension" */;
+			buildPhases = (
+				33DB77BF1E503D5300F56500 /* Sources */,
+				33DB77C01E503D5300F56500 /* Frameworks */,
+				33DB77C11E503D5300F56500 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "mu-watch Extension";
+			productName = "mu-watch Extension";
+			productReference = 33DB77C31E503D5300F56500 /* mu-watch Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		332D13A91E4FDA120075C106 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "Stiven Deleur";
+				TargetAttributes = {
+					332D13B01E4FDA120075C106 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = JP6WHVYWBA;
+						LastSwiftMigration = 0820;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.HealthKit = {
+								enabled = 1;
+							};
+						};
+					};
+					33DB77B61E503D5300F56500 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = JP6WHVYWBA;
+						ProvisioningStyle = Automatic;
+					};
+					33DB77C21E503D5300F56500 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = JP6WHVYWBA;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes.watchos.extension = {
+								enabled = 1;
+							};
+							com.apple.HealthKit.watchos = {
+								enabled = 1;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = 332D13AC1E4FDA120075C106 /* Build configuration list for PBXProject "mu" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 332D13A81E4FDA120075C106;
+			productRefGroup = 332D13B21E4FDA120075C106 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				332D13B01E4FDA120075C106 /* mu */,
+				33DB77B61E503D5300F56500 /* mu-watch */,
+				33DB77C21E503D5300F56500 /* mu-watch Extension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		332D13AF1E4FDA120075C106 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				332D13BF1E4FDA120075C106 /* LaunchScreen.storyboard in Resources */,
+				332D13BC1E4FDA120075C106 /* Assets.xcassets in Resources */,
+				332D13BA1E4FDA120075C106 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		33DB77B51E503D5300F56500 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				33DB77BD1E503D5300F56500 /* Assets.xcassets in Resources */,
+				33DB77DB1E5041D900F56500 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		33DB77C11E503D5300F56500 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				33DB77CD1E503D5300F56500 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		15BD9268D42F63CEB11F4E09 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-mu/Pods-mu-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B9E48896D3E07BF32FC11EE8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-mu/Pods-mu-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F354F7901A081E3D616E3946 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		332D13AD1E4FDA120075C106 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				332D13B71E4FDA120075C106 /* ViewController.swift in Sources */,
+				332D13B51E4FDA120075C106 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		33DB77BF1E503D5300F56500 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				33DB77CB1E503D5300F56500 /* ExtensionDelegate.swift in Sources */,
+				33DB77C91E503D5300F56500 /* InterfaceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		33DB77C61E503D5300F56500 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 33DB77C21E503D5300F56500 /* mu-watch Extension */;
+			targetProxy = 33DB77C51E503D5300F56500 /* PBXContainerItemProxy */;
+		};
+		33DB77D01E503D5300F56500 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 33DB77B61E503D5300F56500 /* mu-watch */;
+			targetProxy = 33DB77CF1E503D5300F56500 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		332D13B81E4FDA120075C106 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				332D13B91E4FDA120075C106 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		332D13BD1E4FDA120075C106 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				332D13BE1E4FDA120075C106 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		332D13C11E4FDA120075C106 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		332D13C21E4FDA120075C106 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		332D13C41E4FDA120075C106 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3B364B77FB899D7E39FCC15D /* Pods-mu.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = mu/mu.entitlements;
+				DEVELOPMENT_TEAM = JP6WHVYWBA;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/mu",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = mu/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.deleurapps.mu;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "mu/mu-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		332D13C51E4FDA120075C106 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4B4D291C70BF3DEB3421D6F1 /* Pods-mu.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = mu/mu.entitlements;
+				DEVELOPMENT_TEAM = JP6WHVYWBA;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/mu",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = mu/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.deleurapps.mu;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "mu/mu-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		33DB77D21E503D5300F56500 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = JP6WHVYWBA;
+				IBSC_MODULE = mu_watch_Extension;
+				INFOPLIST_FILE = "mu-watch/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = com.deleurapps.mu.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.1;
+			};
+			name = Debug;
+		};
+		33DB77D31E503D5300F56500 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = JP6WHVYWBA;
+				IBSC_MODULE = mu_watch_Extension;
+				INFOPLIST_FILE = "mu-watch/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = com.deleurapps.mu.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.1;
+			};
+			name = Release;
+		};
+		33DB77D41E503D5300F56500 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "mu-watch Extension/mu-watch Extension.entitlements";
+				DEVELOPMENT_TEAM = JP6WHVYWBA;
+				INFOPLIST_FILE = "mu-watch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.deleurapps.mu.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.1;
+			};
+			name = Debug;
+		};
+		33DB77D51E503D5300F56500 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "mu-watch Extension/mu-watch Extension.entitlements";
+				DEVELOPMENT_TEAM = JP6WHVYWBA;
+				INFOPLIST_FILE = "mu-watch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.deleurapps.mu.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		332D13AC1E4FDA120075C106 /* Build configuration list for PBXProject "mu" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				332D13C11E4FDA120075C106 /* Debug */,
+				332D13C21E4FDA120075C106 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		332D13C31E4FDA120075C106 /* Build configuration list for PBXNativeTarget "mu" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				332D13C41E4FDA120075C106 /* Debug */,
+				332D13C51E4FDA120075C106 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		33DB77D61E503D5300F56500 /* Build configuration list for PBXNativeTarget "mu-watch Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				33DB77D41E503D5300F56500 /* Debug */,
+				33DB77D51E503D5300F56500 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		33DB77D81E503D5300F56500 /* Build configuration list for PBXNativeTarget "mu-watch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				33DB77D21E503D5300F56500 /* Debug */,
+				33DB77D31E503D5300F56500 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 332D13A91E4FDA120075C106 /* Project object */;
+}
