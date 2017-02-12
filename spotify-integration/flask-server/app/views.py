@@ -80,12 +80,15 @@ def clear():
         classf.gamma["entries"] = list()
         classf.theta = {}
         classf.theta["entries"] = list()
+        classf.heart_rate = {}
+        classf.heart_rate["entries"] = list()
 
         flag_modified(classf, "alpha")
         flag_modified(classf, "beta")
         flag_modified(classf, "gamma")
         flag_modified(classf, "delta")
         flag_modified(classf, "theta")
+        flag_modified(classf, "heart_rate")
         db_session.commit()
 
         resp = jsonify(**{})
@@ -102,7 +105,7 @@ def getClass(classification):
     if classf != None:
         jsonObj = dict()
         jsonObj["class"] = classification
-        jsonObj["heart_rate"] = classf.heartrate
+        jsonObj["heart_rate"] = classf.heart_rate["entries"]
         jsonObj["alpha"] = classf.alpha["entries"]
         jsonObj["beta"] = classf.beta["entries"]
         jsonObj["delta"] = classf.delta["entries"]
@@ -137,7 +140,7 @@ def postClass(request):
     gamma = jsonPost[u"gamma"]
     delta = jsonPost[u"delta"]
     theta = jsonPost[u"theta"]
-    heartrate = int(jsonPost[u"heart_rate"])
+    heart_rate = jsonPost[u"heart_rate"]
 
     classf = db_session.query(TrainingData).filter(TrainingData.className == str(classification)).first()
     if classf != None:
@@ -146,13 +149,14 @@ def postClass(request):
         classf.delta["entries"].extend(delta)
         classf.gamma["entries"].extend(gamma)
         classf.theta["entries"].extend(theta)
-        classf.heartrate = heartrate
+        classf.heart_rate["entries"].extend(heart_rate)
 
         flag_modified(classf, "alpha")
         flag_modified(classf, "beta")
         flag_modified(classf, "gamma")
         flag_modified(classf, "delta")
         flag_modified(classf, "theta")
+        flag_modified(classf, "heart_rate")
         db_session.commit()
 
         resp = jsonify(**{})
