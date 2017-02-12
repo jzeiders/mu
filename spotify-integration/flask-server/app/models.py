@@ -1,5 +1,6 @@
 from sqlalchemy import Column, Integer, String, JSON
 from app.database import Base
+from app.database import db_session
 
 class User(Base):
     __tablename__ = 'users'
@@ -18,5 +19,24 @@ class User(Base):
 class TrainingData(Base):
     __tablename__ = "training_data"
     id = Column(Integer, primary_key=True)
-    name = Column(String(50), unique=True)
-    data = Column(JSON)
+    className = Column(String(50), unique=True)
+    alpha = Column(JSON)
+    beta = Column(JSON)
+    delta = Column(JSON)
+    gamma = Column(JSON)
+    theta = Column(JSON)
+
+    def __init__(self, className=None):
+        self.className = className
+        self.alpha = {}
+        self.alpha["entries"] = list()
+        self.beta = {}
+        self.beta["entries"] = list()
+        self.delta = {}
+        self.delta["entries"] = list()
+        self.gamma = {}
+        self.gamma["entries"] = list()
+        self.theta = {}
+        self.theta["entries"] = list()
+        
+
