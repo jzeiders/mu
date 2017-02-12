@@ -12,11 +12,13 @@ import HealthKit
 import WatchConnectivity
 import Charts
 
-class ViewController: UIViewController, IXNMuseConnectionListener, IXNMuseDataListener, IXNMuseListener, IXNLogListener, WCSessionDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
+class ViewController: UIViewController, IXNMuseConnectionListener, IXNMuseDataListener, IXNMuseListener, IXNLogListener, WCSessionDelegate, UIPickerViewDataSource, UIPickerViewDelegate, WebSocketDelegate {
 
     var muse : IXNMuse?;
     var manager : IXNMuseManager?
-    var socket = WebSocket(url: URL(string: "ws://281b343a.ngrok.io/muse_socket")!)
+    var socket = WebSocket(url: URL(string: "ws://mu-websocket-server.herokuapp.com/muse_socket")!)
+    var parsedDataSocket = WebSocket(url: URL(string: "ws://mu-websocket-server.herokuapp.com/parsed_data")!)
+    
     let classifications = ["Relaxed", "Focused", "Hyped"]
     @IBOutlet weak var heartRateLabel: UILabel!
     
@@ -24,15 +26,22 @@ class ViewController: UIViewController, IXNMuseConnectionListener, IXNMuseDataLi
     
     @IBOutlet weak var websocketButton: UIButton!
     @IBOutlet weak var eegLineChart: LineChartView!
+    @IBOutlet weak var moodPicker: UIPickerView!
+    @IBOutlet weak var playbackView: UIView!
+    
+    @IBOutlet weak var detectedMoodLabel: UILabel!
+    @IBOutlet weak var songPlayingLabel: UILabel!
+    @IBOutlet weak var songScoreLabel: UILabel!
+    var heartRate: Float = -1
     
     let graphWidth = 100
-    let lineWidth : CGFloat = 2.0
+    let lineWidth : CGFloat = 3.0
     
-    var deltaData = [ChartDataEntry]()
-    var thetaData = [ChartDataEntry]()
-    var alphaData = [ChartDataEntry]()
-    var betaData = [ChartDataEntry]()
-    var gammaData = [ChartDataEntry]()
+    var deltaData = [Double]()
+    var thetaData = [Double]()
+    var alphaData = [Double]()
+    var betaData = [Double]()
+    var gammaData = [Double]()
     
     var deltaDataSet = LineChartDataSet(values: [ChartDataEntry](), label: "delta")
     var thetaDataSet = LineChartDataSet(values: [ChartDataEntry](), label: "theta")
@@ -45,7 +54,10 @@ class ViewController: UIViewController, IXNMuseConnectionListener, IXNMuseDataLi
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        parsedDataSocket.delegate = self
+        
         socket.connect()
+        parsedDataSocket.connect()
         manager = IXNMuseManagerIos.sharedManager()
         manager?.setMuseListener(self)
         IXNLogManager.instance()?.setLogListener(self)
@@ -58,8 +70,9 @@ class ViewController: UIViewController, IXNMuseConnectionListener, IXNMuseDataLi
             watchSession.activate()
         }
         websocketButton.layer.cornerRadius = 20
+        playbackView.isHidden = true
         
-        eegLineChart.noDataText = "Connect the Muse to display data"
+        
         
         deltaDataSet.lineWidth = lineWidth
         thetaDataSet.lineWidth = lineWidth
@@ -72,6 +85,30 @@ class ViewController: UIViewController, IXNMuseConnectionListener, IXNMuseDataLi
         alphaDataSet.circleRadius = 0
         betaDataSet.circleRadius = 0
         gammaDataSet.circleRadius = 0
+        
+        deltaDataSet.setColor(ChartColorTemplates.colorful()[0])
+        thetaDataSet.setColor(ChartColorTemplates.colorful()[1])
+        alphaDataSet.setColor(ChartColorTemplates.colorful()[2])
+        betaDataSet.setColor(ChartColorTemplates.colorful()[3])
+        gammaDataSet.setColor(ChartColorTemplates.colorful()[4])
+        
+        eegLineChart.drawBordersEnabled = false
+        eegLineChart.drawGridBackgroundEnabled = false
+        eegLineChart.xAxis.drawLabelsEnabled = false
+        eegLineChart.noDataText = "Connect the Muse to display data"
+        eegLineChart.chartDescription?.text = ""
+        eegLineChart.xAxis.drawGridLinesEnabled = false
+        eegLineChart.leftAxis.drawGridLinesEnabled = false
+        eegLineChart.rightAxis.drawGridLinesEnabled = false
+        eegLineChart.xAxis.drawAxisLineEnabled = false
+        eegLineChart.rightAxis.drawAxisLineEnabled = false
+        eegLineChart.rightAxis.drawLabelsEnabled = false
+        eegLineChart.leftAxis.drawAxisLineEnabled = false
+        eegLineChart.leftAxis.drawLabelsEnabled = false
+        eegLineChart.xAxis.axisMaximum = 100
+        eegLineChart.leftAxis.axisMaximum = 1
+        eegLineChart.xAxis.axisMinimum = 0
+        eegLineChart.leftAxis.axisMinimum = 0
         
     }
 
@@ -122,11 +159,37 @@ class ViewController: UIViewController, IXNMuseConnectionListener, IXNMuseDataLi
     
     func updateGraph(){
         
-        deltaDataSet.values = deltaData
-        thetaDataSet.values = thetaData
-        alphaDataSet.values = alphaData
-        betaDataSet.values = betaData
-        gammaDataSet.values = gammaData
+        var deltaChartData = [ChartDataEntry]()
+        var thetaChartData = [ChartDataEntry]()
+        var alphaChartData = [ChartDataEntry]()
+        var betaChartData = [ChartDataEntry]()
+        var gammaChartData = [ChartDataEntry]()
+        
+        var i = 0
+        while i < graphWidth {
+            if deltaData.count > i{
+                deltaChartData.append(ChartDataEntry(x: Double(i), y: deltaData[i]))
+            }
+            if thetaData.count > i{
+            thetaChartData.append(ChartDataEntry(x: Double(i), y: thetaData[i]))
+                }
+            if alphaData.count > i{
+                alphaChartData.append(ChartDataEntry(x: Double(i), y: alphaData[i]))
+            }
+            if betaData.count > i{
+                betaChartData.append(ChartDataEntry(x: Double(i), y: betaData[i]))
+            }
+            if gammaData.count > i{
+                gammaChartData.append(ChartDataEntry(x: Double(i), y: gammaData[i]))
+            }
+            i += 1
+        }
+        
+        deltaDataSet.values = deltaChartData
+        thetaDataSet.values = thetaChartData
+        alphaDataSet.values = alphaChartData
+        betaDataSet.values = betaChartData
+        gammaDataSet.values = gammaChartData
         
         data.dataSets = [deltaDataSet, thetaDataSet, alphaDataSet, betaDataSet, gammaDataSet]
         
@@ -160,23 +223,42 @@ class ViewController: UIViewController, IXNMuseConnectionListener, IXNMuseDataLi
         if packet!.packetType() == IXNMuseDataPacketType.deltaRelative {
             writeToSocket(param: "delta_relative", data: val)
             
-            deltaData.append(ChartDataEntry(x: Double(deltaData.count), y: avg))
+            if deltaData.count == graphWidth{
+                deltaData.remove(at: 0)
+            }
+            deltaData.append(avg)
         }else if packet!.packetType() == IXNMuseDataPacketType.thetaRelative {
             writeToSocket(param: "theta_relative", data: val)
             
-            thetaData.append(ChartDataEntry(x: Double(thetaData.count), y: avg))
+            if thetaData.count == graphWidth{
+                thetaData.remove(at: 0)
+            }
+            thetaData.append(avg)
         }else if packet!.packetType() == IXNMuseDataPacketType.alphaRelative {
             writeToSocket(param: "alpha_relative", data: val)
             
-            alphaData.append(ChartDataEntry(x: Double(alphaData.count), y: avg))
+            if alphaData.count == graphWidth{
+                alphaData.remove(at: 0)
+            }
+            alphaData.append(avg)
         }else if packet!.packetType() == IXNMuseDataPacketType.betaRelative {
             writeToSocket(param: "beta_relative", data: val)
             
-            betaData.append(ChartDataEntry(x: Double(betaData.count), y: avg))
+            if betaData.count == graphWidth{
+                betaData.remove(at: 0)
+            }
+            betaData.append(avg)
         }else if packet!.packetType() == IXNMuseDataPacketType.gammaRelative {
             writeToSocket(param: "gamma_relative", data: val)
             
-            gammaData.append(ChartDataEntry(x: Double(gammaData.count), y: avg))
+            if gammaData.count == graphWidth{
+                gammaData.remove(at: 0)
+            }
+            gammaData.append(avg)
+            
+            if avg != 0 {
+                writeToSocket(param: "heart_rate", data: [heartRate])
+            }
         }
         updateGraph()
     }
@@ -220,12 +302,14 @@ class ViewController: UIViewController, IXNMuseConnectionListener, IXNMuseDataLi
     
     
     @IBAction func reopenSocket(_ sender: UIButton) {
-        if (socket.isConnected){
-            socket.disconnect(forceTimeout: 0, closeCode: 0)
-            sender.backgroundColor = UIColor.red
-        }else{
+        if (!socket.isConnected || !parsedDataSocket.isConnected){
             socket.connect()
+            parsedDataSocket.connect()
             sender.backgroundColor = UIColor.green
+        }else{
+            socket.disconnect(forceTimeout: 0, closeCode: 0)
+            parsedDataSocket.disconnect(forceTimeout: 0, closeCode: 0)
+            sender.backgroundColor = UIColor.red
         }
     }
     
@@ -244,7 +328,7 @@ class ViewController: UIViewController, IXNMuseConnectionListener, IXNMuseDataLi
     
     func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]){
         if applicationContext["heart_rate"] != nil{
-            writeToSocket(param: "heart_rate", data: [applicationContext["heart_rate"] as! Float])
+            heartRate = applicationContext["heart_rate"] as! Float
             DispatchQueue.main.async(){
                 self.heartRateLabel.text = String(applicationContext["heart_rate"] as! Int)
             }
@@ -273,5 +357,55 @@ class ViewController: UIViewController, IXNMuseConnectionListener, IXNMuseDataLi
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?{
         return classifications[row]
     }
+    
+    @IBAction func segmentedControlSwitched(_ sender: UISegmentedControl) {
+        if (sender.selectedSegmentIndex == 0){
+            moodPicker.isHidden = false
+            playbackView.isHidden = true
+        }else{
+            moodPicker.isHidden = true
+            playbackView.isHidden = false
+        }
+    }
+    
+    
+    func websocketDidConnect(socket: WebSocket){
+        
+    }
+    func websocketDidDisconnect(socket: WebSocket, error: NSError?){
+        
+    }
+    func websocketDidReceiveMessage(socket: WebSocket, text: String){
+        if (text == "hi"){
+            return
+        }
+        
+        print("WEBSOCKET: \(text)")
+        
+        let data = text.data(using: String.Encoding.utf8, allowLossyConversion: false)!
+        
+        do {
+            let json = try JSONSerialization.jsonObject(with: data, options: []) as! [String: AnyObject]
+            if let classification = json["classification"] as? Int {
+                detectedMoodLabel.text = "Detected Mood: \(classifications[classification])"
+            }
+            if let song_id = json["song-id"] as? String {
+                songPlayingLabel.text = "Playing Song: #\(song_id)"
+            }
+            if let song_rating = json["song-rating"] as? Double {
+                var song_rating_perc = lround(song_rating*150)
+                if song_rating_perc > 100{
+                    song_rating_perc = 100
+                }
+                songScoreLabel.text = "\(song_rating_perc)%"
+            }
+        } catch let error as NSError {
+            print("Failed to load JSON: \(error.localizedDescription)")
+        }
+    }
+    func websocketDidReceiveData(socket: WebSocket, data: Data){
+        
+    }
+    
 }
 
