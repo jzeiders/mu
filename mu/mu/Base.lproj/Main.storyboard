@@ -1,14 +1,21 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="mu" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +23,116 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="Status: Disconnected" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="42" translatesAutoresizingMaskIntoConstraints="NO" id="lyL-aw-tP3">
+                                <rect key="frame" x="16" y="625.5" width="343" height="22"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4fP-Lc-F2n" userLabel="Websocket">
+                                <rect key="frame" x="325.5" y="28" width="33.5" height="33.5"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="4fP-Lc-F2n" secondAttribute="height" multiplier="1:1" id="Awm-0w-Giu"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="18"/>
+                                <size key="titleShadowOffset" width="7" height="11"/>
+                                <state key="normal" title="Button" image="websocketIcon"/>
+                                <connections>
+                                    <action selector="reopenSocket:" destination="BYZ-38-t0r" eventType="touchUpInside" id="V8V-V2-1CL"/>
+                                </connections>
+                            </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Oib-Fx-czk">
+                                <rect key="frame" x="94.5" y="30" width="187.5" height="29"/>
+                                <segments>
+                                    <segment title="Training"/>
+                                    <segment title="Playback"/>
+                                </segments>
+                            </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UeZ-6W-JCd" userLabel="Heart">
+                                <rect key="frame" x="246.5" y="513" width="112.5" height="112.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="UeZ-6W-JCd" secondAttribute="height" multiplier="1:1" id="lCN-hf-oKI"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="heart"/>
+                                <connections>
+                                    <action selector="getHeartRate:" destination="BYZ-38-t0r" eventType="touchUpInside" id="t6f-Ay-CIg"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UIi-gS-shi">
+                                <rect key="frame" x="16" y="28.5" width="33.5" height="33.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="UIi-gS-shi" secondAttribute="height" multiplier="1:1" id="uUB-QQ-E0E"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="brainConnect"/>
+                                <connections>
+                                    <action selector="connectToMuse:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gcL-Rd-AuU"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="---" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZXZ-vs-fec">
+                                <rect key="frame" x="246.5" y="513" width="112.5" height="112.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KvA-X0-gX1">
+                                <rect key="frame" x="16" y="70" width="343" height="216"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="ViB-GU-cQO"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="jkl-vQ-gfu"/>
+                                </connections>
+                            </pickerView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XTw-yW-TzJ" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="16" y="294" width="343" height="211"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="leadingMargin" secondItem="lyL-aw-tP3" secondAttribute="leading" id="EEa-v3-5Y2"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="KvA-X0-gX1" secondAttribute="trailing" id="EgC-Ea-4zl"/>
+                            <constraint firstItem="ZXZ-vs-fec" firstAttribute="top" secondItem="XTw-yW-TzJ" secondAttribute="bottom" constant="8" id="EmX-ft-imu"/>
+                            <constraint firstItem="4fP-Lc-F2n" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="IVB-Gj-yWq"/>
+                            <constraint firstItem="UIi-gS-shi" firstAttribute="width" secondItem="4fP-Lc-F2n" secondAttribute="width" id="OBU-Ku-fVm"/>
+                            <constraint firstItem="ZXZ-vs-fec" firstAttribute="centerX" secondItem="UeZ-6W-JCd" secondAttribute="centerX" id="P2q-Au-kxq"/>
+                            <constraint firstItem="lyL-aw-tP3" firstAttribute="top" secondItem="UeZ-6W-JCd" secondAttribute="bottom" id="RNB-pu-jjM"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="lyL-aw-tP3" secondAttribute="bottom" constant="20" id="TYL-79-pPk"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="UeZ-6W-JCd" secondAttribute="trailing" id="V2k-5M-oQl"/>
+                            <constraint firstItem="UIi-gS-shi" firstAttribute="centerY" secondItem="4fP-Lc-F2n" secondAttribute="centerY" id="VL8-SQ-x2S"/>
+                            <constraint firstItem="UeZ-6W-JCd" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.3" id="WDo-i0-mfW"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="XTw-yW-TzJ" secondAttribute="trailing" id="WKL-06-8P6"/>
+                            <constraint firstItem="ZXZ-vs-fec" firstAttribute="width" secondItem="UeZ-6W-JCd" secondAttribute="width" id="aQS-NC-Ndf"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="4fP-Lc-F2n" secondAttribute="trailing" id="aWH-oI-1bO"/>
+                            <constraint firstItem="Oib-Fx-czk" firstAttribute="centerY" secondItem="4fP-Lc-F2n" secondAttribute="centerY" id="e6b-3u-rYb"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="lyL-aw-tP3" secondAttribute="trailing" id="fPh-fa-DEb"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="UIi-gS-shi" secondAttribute="leading" id="gUR-s6-zCi"/>
+                            <constraint firstItem="Oib-Fx-czk" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jeH-II-qvS"/>
+                            <constraint firstItem="4fP-Lc-F2n" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="1:20" id="jo8-cw-qUF"/>
+                            <constraint firstItem="KvA-X0-gX1" firstAttribute="top" secondItem="UIi-gS-shi" secondAttribute="bottom" constant="8" id="rrw-Tu-mYK"/>
+                            <constraint firstItem="Oib-Fx-czk" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.5" id="t6C-gM-ycG"/>
+                            <constraint firstItem="KvA-X0-gX1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="vYp-Y0-M1f"/>
+                            <constraint firstItem="ZXZ-vs-fec" firstAttribute="height" secondItem="UeZ-6W-JCd" secondAttribute="height" id="vyB-hV-qVx"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="XTw-yW-TzJ" secondAttribute="leading" id="xWi-cL-4hd"/>
+                            <constraint firstItem="XTw-yW-TzJ" firstAttribute="top" secondItem="KvA-X0-gX1" secondAttribute="bottom" constant="8" id="yjh-o1-Izt"/>
+                            <constraint firstItem="ZXZ-vs-fec" firstAttribute="centerY" secondItem="UeZ-6W-JCd" secondAttribute="centerY" id="z2g-Iy-2FC"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="eegLineChart" destination="XTw-yW-TzJ" id="2bC-n1-6O3"/>
+                        <outlet property="heartRateLabel" destination="ZXZ-vs-fec" id="sf7-9P-pXg"/>
+                        <outlet property="statusLabel" destination="lyL-aw-tP3" id="yEW-AU-deA"/>
+                        <outlet property="websocketButton" destination="4fP-Lc-F2n" id="qLG-Ie-Eit"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="140" y="137.18140929535232"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="brainConnect" width="512" height="512"/>
+        <image name="heart" width="1024" height="1024"/>
+        <image name="websocketIcon" width="512" height="512"/>
+    </resources>
 </document>
