@@ -1,0 +1,796 @@
+progress[value] {
+	position: relative;
+	left: 0%;
+	width: 95%;
+	height: 30px;
+	appearance: none;
+	bottom: 10px;
+}
+
+progress[value]::-webkit-progress-bar {
+	background-color: #eee;
+	border-radius: 2px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+}
+
+progress[value]::-webkit-progress-value {
+	background-color: darkorange;
+	box-shadow: 10px 5px -2px orange;
+}
+
+progress[value]::-webkit-progress-value::before {
+	content: '80%';
+	position: absolute;
+	right: 0;
+	top: -125%;
+}
+
+h5 {
+	margin-left: 20px;
+}
+
+
+.btn {
+	display: block;
+	height: 40px;
+	width: 40px;
+	border-radius: 50%;
+	position: relative;
+	border-width: 0;
+	outline: none;
+	border-radius: 2px;
+	box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+	color: white;
+	background-color: darkorange;
+	transition: background-color .3s;
+}
+.skip {
+    display: block;
+	height: 40px;
+	width: 120px;
+	border-radius: 50%;
+	border-width: 0;
+    position: absolute;
+    right: 0px;
+	outline: none;
+	border-radius: 2px;
+	box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+	color: white;
+	background-color: darkorange;
+	transition: background-color .3s;
+}
+.skip:hover,
+:focus {
+	background-color: orange;
+}
+
+.skip:before {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	display: block;
+	width: 0;
+	padding-top: 0;
+	border-radius: 100%;
+	background-color: rgba(236, 240, 241, .3);
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
+.skip:active:before {
+	width: 120%;
+	padding-top: 120%;
+	transition: width .2s ease-out, padding-top .2s ease-out;
+}
+
+.btn:hover,
+:focus {
+	background-color: orange;
+}
+
+.btn:before {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	display: block;
+	width: 0;
+	padding-top: 0;
+	border-radius: 100%;
+	background-color: rgba(236, 240, 241, .3);
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
+.btn:active:before {
+	width: 120%;
+	padding-top: 120%;
+	transition: width .2s ease-out, padding-top .2s ease-out;
+}
+
+.titleBox {
+	position: relative;
+	color: white;
+	display: flex;
+    padding-top: 5px;
+    width: 95%;
+	flex-direction: row;
+	align-self: flex-start;
+	align-items: flex-end;
+	justify-content: flex-start;
+}
+
+.playerBox {
+	margin: 0 0 0 0;
+	background-color: #212121;
+	display: flex;
+	justify-content: flex-start;
+	position: fixed;
+	bottom: 0px;
+	left: 0%;
+	height: 100px;
+	width: 100%;
+}
+
+.bar {
+	position: relative;
+	flex-grow: 10;
+	bottom: 0px;
+	left: 3%;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+#art {
+	width: 100px;
+}
+.tabs{
+    position: fixed;
+    bottom: 110px;
+    width: 100%;
+}
+
+.segmentedControl {
+  position: relative;
+  display: inline-block;
+  border: 1px solid currentColor;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: none;
+  overflow: hidden;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -moz-user-select: -moz-none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -moz-transition-duration: 0.7s;
+  -webkit-transition-duration: 0.7s;
+  transition-duration: 0.7s;
+  -moz-transition-timing-function: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  -webkit-transition-timing-function: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  transition-timing-function: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  -moz-transition-property: none;
+  -webkit-transition-property: none;
+  transition-property: none;
+  -webkit-tap-highlight-color: transparent;
+  > {
+    input {
+      position: absolute;
+      left: -10000px;
+      opacity: 0;
+      &[type='checkbox'] ~ label {
+        -moz-transition-duration: 0s;
+        -webkit-transition-duration: 0s;
+        transition-duration: 0s;
+        &:before {
+          opacity: 0;
+        }
+      }
+      &:disabled:nth-child(1) ~ label:nth-of-type(1) {
+        opacity: 0.3;
+        cursor: not-allowed;
+      }
+      &:nth-child(1):checked ~ label {
+        &:nth-of-type(1) {
+          &:after, &:before {
+            opacity: 1;
+          }
+        }
+        &:first-of-type {
+          &:nth-last-of-type(1) {
+            &:after, &:before {
+              -moz-transform: translateX(0%);
+              -ms-transform: translateX(0%);
+              -webkit-transform: translateX(0%);
+              transform: translateX(0%);
+            }
+            ~ label {
+              &:after, &:before {
+                -moz-transform: translateX(0%);
+                -ms-transform: translateX(0%);
+                -webkit-transform: translateX(0%);
+                transform: translateX(0%);
+              }
+            }
+          }
+          &:nth-last-of-type(2) {
+            &:after, &:before {
+              -moz-transform: translateX(0%);
+              -ms-transform: translateX(0%);
+              -webkit-transform: translateX(0%);
+              transform: translateX(0%);
+            }
+            ~ label {
+              &:after, &:before {
+                -moz-transform: translateX(0%);
+                -ms-transform: translateX(0%);
+                -webkit-transform: translateX(0%);
+                transform: translateX(0%);
+              }
+            }
+          }
+          &:nth-last-of-type(3) {
+            &:after, &:before {
+              -moz-transform: translateX(0%);
+              -ms-transform: translateX(0%);
+              -webkit-transform: translateX(0%);
+              transform: translateX(0%);
+            }
+            ~ label {
+              &:after, &:before {
+                -moz-transform: translateX(0%);
+                -ms-transform: translateX(0%);
+                -webkit-transform: translateX(0%);
+                transform: translateX(0%);
+              }
+            }
+          }
+          &:nth-last-of-type(4) {
+            &:after, &:before {
+              -moz-transform: translateX(0%);
+              -ms-transform: translateX(0%);
+              -webkit-transform: translateX(0%);
+              transform: translateX(0%);
+            }
+            ~ label {
+              &:after, &:before {
+                -moz-transform: translateX(0%);
+                -ms-transform: translateX(0%);
+                -webkit-transform: translateX(0%);
+                transform: translateX(0%);
+              }
+            }
+          }
+          &:nth-last-of-type(5) {
+            &:after, &:before {
+              -moz-transform: translateX(0%);
+              -ms-transform: translateX(0%);
+              -webkit-transform: translateX(0%);
+              transform: translateX(0%);
+            }
+            ~ label {
+              &:after, &:before {
+                -moz-transform: translateX(0%);
+                -ms-transform: translateX(0%);
+                -webkit-transform: translateX(0%);
+                transform: translateX(0%);
+              }
+            }
+          }
+          &:nth-last-of-type(6) {
+            &:after, &:before {
+              -moz-transform: translateX(0%);
+              -ms-transform: translateX(0%);
+              -webkit-transform: translateX(0%);
+              transform: translateX(0%);
+            }
+            ~ label {
+              &:after, &:before {
+                -moz-transform: translateX(0%);
+                -ms-transform: translateX(0%);
+                -webkit-transform: translateX(0%);
+                transform: translateX(0%);
+              }
+            }
+          }
+        }
+      }
+      &:disabled:nth-child(2) ~ label:nth-of-type(2) {
+        opacity: 0.3;
+        cursor: not-allowed;
+      }
+      &:nth-child(2):checked ~ label {
+        &:nth-of-type(2) {
+          &:after, &:before {
+            opacity: 1;
+          }
+        }
+        &:first-of-type {
+          &:nth-last-of-type(2) {
+            &:after, &:before {
+              -moz-transform: translateX(100%);
+              -ms-transform: translateX(100%);
+              -webkit-transform: translateX(100%);
+              transform: translateX(100%);
+            }
+            ~ label {
+              &:after, &:before {
+                -moz-transform: translateX(100%);
+                -ms-transform: translateX(100%);
+                -webkit-transform: translateX(100%);
+                transform: translateX(100%);
+              }
+            }
+          }
+          &:nth-last-of-type(3) {
+            &:after, &:before {
+              -moz-transform: translateX(100%);
+              -ms-transform: translateX(100%);
+              -webkit-transform: translateX(100%);
+              transform: translateX(100%);
+            }
+            ~ label {
+              &:after, &:before {
+                -moz-transform: translateX(100%);
+                -ms-transform: translateX(100%);
+                -webkit-transform: translateX(100%);
+                transform: translateX(100%);
+              }
+            }
+          }
+          &:nth-last-of-type(4) {
+            &:after, &:before {
+              -moz-transform: translateX(100%);
+              -ms-transform: translateX(100%);
+              -webkit-transform: translateX(100%);
+              transform: translateX(100%);
+            }
+            ~ label {
+              &:after, &:before {
+                -moz-transform: translateX(100%);
+                -ms-transform: translateX(100%);
+                -webkit-transform: translateX(100%);
+                transform: translateX(100%);
+              }
+            }
+          }
+          &:nth-last-of-type(5) {
+            &:after, &:before {
+              -moz-transform: translateX(100%);
+              -ms-transform: translateX(100%);
+              -webkit-transform: translateX(100%);
+              transform: translateX(100%);
+            }
+            ~ label {
+              &:after, &:before {
+                -moz-transform: translateX(100%);
+                -ms-transform: translateX(100%);
+                -webkit-transform: translateX(100%);
+                transform: translateX(100%);
+              }
+            }
+          }
+          &:nth-last-of-type(6) {
+            &:after, &:before {
+              -moz-transform: translateX(100%);
+              -ms-transform: translateX(100%);
+              -webkit-transform: translateX(100%);
+              transform: translateX(100%);
+            }
+            ~ label {
+              &:after, &:before {
+                -moz-transform: translateX(100%);
+                -ms-transform: translateX(100%);
+                -webkit-transform: translateX(100%);
+                transform: translateX(100%);
+              }
+            }
+          }
+        }
+      }
+      &:disabled:nth-child(3) ~ label:nth-of-type(3) {
+        opacity: 0.3;
+        cursor: not-allowed;
+      }
+      &:nth-child(3):checked ~ label {
+        &:nth-of-type(3) {
+          &:after, &:before {
+            opacity: 1;
+          }
+        }
+        &:first-of-type {
+          &:nth-last-of-type(3) {
+            &:after, &:before {
+              -moz-transform: translateX(200%);
+              -ms-transform: translateX(200%);
+              -webkit-transform: translateX(200%);
+              transform: translateX(200%);
+            }
+            ~ label {
+              &:after, &:before {
+                -moz-transform: translateX(200%);
+                -ms-transform: translateX(200%);
+                -webkit-transform: translateX(200%);
+                transform: translateX(200%);
+              }
+            }
+          }
+          &:nth-last-of-type(4) {
+            &:after, &:before {
+              -moz-transform: translateX(200%);
+              -ms-transform: translateX(200%);
+              -webkit-transform: translateX(200%);
+              transform: translateX(200%);
+            }
+            ~ label {
+              &:after, &:before {
+                -moz-transform: translateX(200%);
+                -ms-transform: translateX(200%);
+                -webkit-transform: translateX(200%);
+                transform: translateX(200%);
+              }
+            }
+          }
+          &:nth-last-of-type(5) {
+            &:after, &:before {
+              -moz-transform: translateX(200%);
+              -ms-transform: translateX(200%);
+              -webkit-transform: translateX(200%);
+              transform: translateX(200%);
+            }
+            ~ label {
+              &:after, &:before {
+                -moz-transform: translateX(200%);
+                -ms-transform: translateX(200%);
+                -webkit-transform: translateX(200%);
+                transform: translateX(200%);
+              }
+            }
+          }
+          &:nth-last-of-type(6) {
+            &:after, &:before {
+              -moz-transform: translateX(200%);
+              -ms-transform: translateX(200%);
+              -webkit-transform: translateX(200%);
+              transform: translateX(200%);
+            }
+            ~ label {
+              &:after, &:before {
+                -moz-transform: translateX(200%);
+                -ms-transform: translateX(200%);
+                -webkit-transform: translateX(200%);
+                transform: translateX(200%);
+              }
+            }
+          }
+        }
+      }
+      &:disabled:nth-child(4) ~ label:nth-of-type(4) {
+        opacity: 0.3;
+        cursor: not-allowed;
+      }
+      &:nth-child(4):checked ~ label {
+        &:nth-of-type(4) {
+          &:after, &:before {
+            opacity: 1;
+          }
+        }
+        &:first-of-type {
+          &:nth-last-of-type(4) {
+            &:after, &:before {
+              -moz-transform: translateX(300%);
+              -ms-transform: translateX(300%);
+              -webkit-transform: translateX(300%);
+              transform: translateX(300%);
+            }
+            ~ label {
+              &:after, &:before {
+                -moz-transform: translateX(300%);
+                -ms-transform: translateX(300%);
+                -webkit-transform: translateX(300%);
+                transform: translateX(300%);
+              }
+            }
+          }
+          &:nth-last-of-type(5) {
+            &:after, &:before {
+              -moz-transform: translateX(300%);
+              -ms-transform: translateX(300%);
+              -webkit-transform: translateX(300%);
+              transform: translateX(300%);
+            }
+            ~ label {
+              &:after, &:before {
+                -moz-transform: translateX(300%);
+                -ms-transform: translateX(300%);
+                -webkit-transform: translateX(300%);
+                transform: translateX(300%);
+              }
+            }
+          }
+          &:nth-last-of-type(6) {
+            &:after, &:before {
+              -moz-transform: translateX(300%);
+              -ms-transform: translateX(300%);
+              -webkit-transform: translateX(300%);
+              transform: translateX(300%);
+            }
+            ~ label {
+              &:after, &:before {
+                -moz-transform: translateX(300%);
+                -ms-transform: translateX(300%);
+                -webkit-transform: translateX(300%);
+                transform: translateX(300%);
+              }
+            }
+          }
+        }
+      }
+      &:disabled:nth-child(5) ~ label:nth-of-type(5) {
+        opacity: 0.3;
+        cursor: not-allowed;
+      }
+      &:nth-child(5):checked ~ label {
+        &:nth-of-type(5) {
+          &:after, &:before {
+            opacity: 1;
+          }
+        }
+        &:first-of-type {
+          &:nth-last-of-type(5) {
+            &:after, &:before {
+              -moz-transform: translateX(400%);
+              -ms-transform: translateX(400%);
+              -webkit-transform: translateX(400%);
+              transform: translateX(400%);
+            }
+            ~ label {
+              &:after, &:before {
+                -moz-transform: translateX(400%);
+                -ms-transform: translateX(400%);
+                -webkit-transform: translateX(400%);
+                transform: translateX(400%);
+              }
+            }
+          }
+          &:nth-last-of-type(6) {
+            &:after, &:before {
+              -moz-transform: translateX(400%);
+              -ms-transform: translateX(400%);
+              -webkit-transform: translateX(400%);
+              transform: translateX(400%);
+            }
+            ~ label {
+              &:after, &:before {
+                -moz-transform: translateX(400%);
+                -ms-transform: translateX(400%);
+                -webkit-transform: translateX(400%);
+                transform: translateX(400%);
+              }
+            }
+          }
+        }
+      }
+      &:disabled:nth-child(6) ~ label:nth-of-type(6) {
+        opacity: 0.3;
+        cursor: not-allowed;
+      }
+      &:nth-child(6):checked ~ label {
+        &:nth-of-type(6) {
+          &:after, &:before {
+            opacity: 1;
+          }
+        }
+        &:first-of-type:nth-last-of-type(6) {
+          &:after, &:before {
+            -moz-transform: translateX(500%);
+            -ms-transform: translateX(500%);
+            -webkit-transform: translateX(500%);
+            transform: translateX(500%);
+          }
+          ~ label {
+            &:after, &:before {
+              -moz-transform: translateX(500%);
+              -ms-transform: translateX(500%);
+              -webkit-transform: translateX(500%);
+              transform: translateX(500%);
+            }
+          }
+        }
+      }
+    }
+    label {
+      display: inline-block;
+      padding: 0 .71em;
+      cursor: pointer;
+      float: left;
+      line-height: 3em;
+      font-style: inherit;
+      font-weight: inherit;
+      text-decoration: inherit;
+      -moz-transition-property: none;
+      -webkit-transition-property: none;
+      transition-property: none;
+      -moz-transition-duration: inherit;
+      -webkit-transition-duration: inherit;
+      transition-duration: inherit;
+      -moz-transition-timing-function: inherit;
+      -webkit-transition-timing-function: inherit;
+      transition-timing-function: inherit;
+      &:before {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        -moz-transform: translateX(-100%);
+        -ms-transform: translateX(-100%);
+        -webkit-transform: translateX(-100%);
+        transform: translateX(-100%);
+      }
+      &:after {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        -moz-transform: translateX(-100%);
+        -ms-transform: translateX(-100%);
+        -webkit-transform: translateX(-100%);
+        transform: translateX(-100%);
+        color: white;
+        content: attr(data-value);
+        text-align: center;
+        padding: inherit;
+        z-index: 10;
+        font-style: inherit;
+        text-decoration: inherit;
+        font-weight: inherit;
+        opacity: 0;
+        -moz-transition-property: opacity, -moz-transform;
+        -o-transition-property: opacity, -o-transform;
+        -webkit-transition-property: opacity, -webkit-transform;
+        transition-property: opacity, transform;
+        -moz-transition-duration: inherit;
+        -o-transition-duration: inherit;
+        -webkit-transition-duration: inherit;
+        transition-duration: inherit;
+        -moz-transition-timing-function: inherit;
+        -o-transition-timing-function: inherit;
+        -webkit-transition-timing-function: inherit;
+        transition-timing-function: inherit;
+        text-align: center;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+      }
+      text-align: center;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      &:before {
+        content: '';
+        color: inherit;
+        background: currentColor;
+        -moz-transition-property: -moz-transform;
+        -o-transition-property: -o-transform;
+        -webkit-transition-property: -webkit-transform;
+        transition-property: transform;
+        -moz-transition-duration: inherit;
+        -o-transition-duration: inherit;
+        -webkit-transition-duration: inherit;
+        transition-duration: inherit;
+        -moz-transition-timing-function: inherit;
+        -o-transition-timing-function: inherit;
+        -webkit-transition-timing-function: inherit;
+        transition-timing-function: inherit;
+      }
+      &:first-of-type {
+        &:nth-last-of-type(1) {
+          width: 100%;
+          &:after, &:before {
+            width: 100%;
+          }
+          ~ label {
+            width: 100%;
+            &:after, &:before {
+              width: 100%;
+            }
+          }
+        }
+        &:nth-last-of-type(2) {
+          width: 50%;
+          &:after, &:before {
+            width: 50%;
+          }
+          ~ label {
+            width: 50%;
+            &:after, &:before {
+              width: 50%;
+            }
+          }
+        }
+        &:nth-last-of-type(3) {
+          width: 33.33333%;
+          &:after, &:before {
+            width: 33.33333%;
+          }
+          ~ label {
+            width: 33.33333%;
+            &:after, &:before {
+              width: 33.33333%;
+            }
+          }
+        }
+        &:nth-last-of-type(4) {
+          width: 25%;
+          &:after, &:before {
+            width: 25%;
+          }
+          ~ label {
+            width: 25%;
+            &:after, &:before {
+              width: 25%;
+            }
+          }
+        }
+        &:nth-last-of-type(5) {
+          width: 20%;
+          &:after, &:before {
+            width: 20%;
+          }
+          ~ label {
+            width: 20%;
+            &:after, &:before {
+              width: 20%;
+            }
+          }
+        }
+        &:nth-last-of-type(6) {
+          width: 16.66667%;
+          &:after, &:before {
+            width: 16.66667%;
+          }
+          ~ label {
+            width: 16.66667%;
+            &:after, &:before {
+              width: 16.66667%;
+            }
+          }
+        }
+      }
+    }
+  }
+  &.italic, .italic {
+    font-style: italic;
+  }
+  &.bold, .bold {
+    font-weight: bold;
+  }
+  &.underline, .underline {
+    text-decoration: underline;
+  }
+  &.line-through, .line-through {
+    text-decoration: line-through;
+  }
+}
