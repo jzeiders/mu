@@ -1,6 +1,7 @@
 from sqlalchemy import Column, Integer, String, JSON
 from app.database import Base
 from app.database import db_session
+import presets
 
 class User(Base):
     __tablename__ = 'users'
@@ -13,6 +14,24 @@ class User(Base):
         if playlists == None:
             self.playlists = dict()
             self.playlists["classifications"] = dict()
+            self.playlists["classifications"]["focused"] = list()
+            for song_id in presets.focused:
+                self.playlists["classifications"]["focused"].append({
+                    "song-id": song_id,
+                    "song-rating": "50"
+                })
+            self.playlists["classifications"]["relaxed"] = list()
+            for song_id in presets.relaxed:
+                self.playlists["classifications"]["relaxed"].append({
+                    "song-id": song_id,
+                    "song-rating": "50"
+                })
+            self.playlists["classifications"]["hyped"] = list()
+            for song_id in presets.hyped:
+                self.playlists["classifications"]["hyped"].append({
+                    "song-id": song_id,
+                    "song-rating": "50"
+                })
 
 
     def __repr__(self):
