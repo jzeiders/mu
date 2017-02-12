@@ -3,7 +3,7 @@ import Player from './player.jsx';
 import axios from 'axios';
 import SC from 'soundcloud';
 
-const changeUrl = "ws://mu-websocket-server.herokuapp.com/song_name";
+const changeUrl = "wss://mu-websocket-server.herokuapp.com/song_name";
 const trackUrl = "https://hackpoly-mu.herokuapp.com/playlist"
 
 export default class PlayerContainer extends React.Component {

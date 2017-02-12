@@ -3,7 +3,7 @@ import styles from './viz.scss';
 import ReactSmoothiee from "react-smoothie";
 import smoothie from 'smoothie';
 
-const ws = "ws://mu-websocket-server.herokuapp.com/raw_data"
+const ws = "wss://mu-websocket-server.herokuapp.com/raw_data"
 
 export default class Viz extends React.Component {
     constructor(props) {
@@ -22,7 +22,7 @@ export default class Viz extends React.Component {
             console.log("MOUNTED")
             console.log(this.chart);
             if (!this.smoothie) 
-                this.smoothie = new smoothie.SmoothieChart({scaleSmoothing:0.1,maxValue:1,minValue:0});
+                this.smoothie = new smoothie.SmoothieChart({strokeStyle:'transparent',sharpLines:true,scaleSmoothing:0.1,maxValue:1,minValue:0});
             
             if (this.canvas) {
                 this

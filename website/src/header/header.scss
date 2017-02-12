@@ -3,7 +3,19 @@
     top: 0px;
     width: 100%;
     color: white;
-    font-weight: 700; 
-    text-align: center;
+    font-weight: 900; 
+    text-align: left;
     background-color: #212121;
+}
+
+.headerBar h3 {
+    display: inline-block;
+    vertical-align: middle;
+    padding-left: 40px;
+}
+.headerBar img {
+    position: fixed;
+    display: inline-block;
+    right: 10px;
+    top: 10px;
 }
